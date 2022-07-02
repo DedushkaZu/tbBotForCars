@@ -12,8 +12,9 @@ let timer = null;
 let counter = 0;
 let prevArr = [];
 
-bot.onText(/\/start/, (msg) => {
+bot.onText(/\/start/, async (msg) => {
 	console.log('команда старт');
+	await getLinksFromPage();
 	timer = setInterval(async () => {
 		const randomDelay = Math.floor(Math.random() * (5 + 1));
 		const currentMinute = new Date().getMinutes();
