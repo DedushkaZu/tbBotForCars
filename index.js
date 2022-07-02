@@ -1,7 +1,10 @@
 const TelegramBot = require('node-telegram-bot-api');
+const express = require('express');
 const token = '5422997374:AAHq-2pGQ37tSd4KYQzZBXwO5mNKvBKpnGA';
 const puppeteer = require('puppeteer');
 const bot = new TelegramBot(token, { polling: true });
+const app = express()
+const PORT = process.env.PORT || 3000;
 
 const url = 'https://m.auto.ru/moskva/cars/all/?top_days=1&year_to=2000&price_from=150000&price_to=300000&exclude_catalog_filter=mark%3DVAZ&exclude_catalog_filter=mark%3DGAZ&year_from=1990&sort=cr_date-desc'
 
@@ -78,3 +81,7 @@ const getLinksFromPage = async () => {
 }
 
 // getLinksFromPage();
+
+// bot.launch();
+
+app.listen(PORT, () => console.log(`My server is running on port ${PORT}`))
