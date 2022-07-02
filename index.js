@@ -1,8 +1,9 @@
 const TelegramBot = require('node-telegram-bot-api');
 const token = '5422997374:AAHq-2pGQ37tSd4KYQzZBXwO5mNKvBKpnGA';
 const puppeteer = require('puppeteer');
-
-const bot = new TelegramBot(token, { polling: true });
+const port = process.env.PORT || 8443;
+const host = process.env.HOST;
+const bot = new TelegramBot(token, { webHook: { port: port, host: host }, polling: true });
 
 const url = 'https://m.auto.ru/moskva/cars/all/?top_days=1&year_to=2000&price_from=150000&price_to=300000&exclude_catalog_filter=mark%3DVAZ&exclude_catalog_filter=mark%3DGAZ&year_from=1990&sort=cr_date-desc'
 
