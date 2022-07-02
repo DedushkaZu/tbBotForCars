@@ -54,7 +54,7 @@ bot.onText(/\/stop/, () => {
 const getLinksFromPage = async () => {
 	const browser = await puppeteer.launch({
 		headless: true, // false: enables one to view the Chrome instance in action
-		defaultViewport: null, // (optional) useful only in non-headless mode
+		args: ['--no-sandbox', '--disable-setuid-sandbox']
 	});
 	const page = await browser.newPage();
 	// await page.setUserAgent(userAgent.toString());
